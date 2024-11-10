@@ -8,6 +8,7 @@ namespace ActivTrak.Assessment.GridR.Core
 
         public uint Id { get; }
         public ReadOnlyDictionary<Coordinate, Cell> Cells { get; private set; }
+        public Coordinate CenterOfMass { get; private set; }
 
         private Subregion(uint id)
         {
@@ -32,6 +33,8 @@ namespace ActivTrak.Assessment.GridR.Core
                     DetermineTargetSubregionAndAddCellToIt(interestingCells, interestingCell);
                 }
             }
+
+            CalculateCenterOfMass();
 
             return subregionsToReturn;
 
@@ -186,6 +189,66 @@ namespace ActivTrak.Assessment.GridR.Core
                 Subregion newSubregion = new((uint)subregionsToReturn.Count);
                 newSubregion.AddCell(interestingCell.Key, interestingCell.Value);
                 subregionsToReturn.Add(newSubregion.Id, newSubregion);
+            }
+
+            void CalculateCenterOfMass()
+            {
+                foreach (var subregion in subregionsToReturn)
+                {
+                    // get average
+                    int signalTotal = -1;
+                    int average = -1;
+                    int lowestDifference = -1;
+                    Dictionary<Coordinate, int> cellsWithDifferenceFromAverage = [];
+                    Dictionary<Coordinate, int> cellsWithLowestDifference = new Dictionary<Coordinate, int>();
+                    Dictionary<Coordinate, uint> cellsWithCoordinateYAsValue = [];
+                    uint lowestY = 0;
+                    Dictionary<Coordinate, uint> cellsWithLowestY = [];
+                    uint lowestX = 0;
+                    
+
+                    foreach (var cell in subregion.Value.Cells)
+                    {
+                        signalTotal += cell.Value.Signal;
+                    }
+
+                    average = signalTotal / subregion.Value.Cells.Count;
+
+                    // find closest coordinate by
+                    // getting difference
+                    
+                    foreach (var cell in subregion.Value.Cells)
+                    {
+                        cellsWithDifferenceFromAverage.Add(cell.Key, Math.Abs(average - cell.Value.Signal));
+                    }
+
+                    // more than 1?
+                    lowestDifference = cellsWithDifferenceFromAverage.Values.Min();
+
+                    cellsWithLowestDifference = cellsWithDifferenceFromAverage.Where(x => x.Value == lowestDifference).ToDictionary<Coordinate, int>();
+
+                    if (cellsWithLowestDifference.Count > 1 )
+                    {
+                        // more than 1?
+                        cellsWithCoordinateYAsValue = cellsWithLowestDifference.Keys.Select(x => new KeyValuePair<Coordinate, uint>(x, x.Y)).ToDictionary<Coordinate, uint>();
+                        lowestY = cellsWithCoordinateYAsValue.Values.Min();
+                        cellsWithLowestY = cellsWithCoordinateYAsValue.Where(x => x.Value == lowestY).ToDictionary();
+                        if (cellsWithLowestY.Count > 1)
+                        {
+                            lowestX = cellsWithLowestY.Keys.Select(x => new KeyValuePair<Coordinate, uint>(x, x.X)).ToDictionary().Values.Min();
+                            subregion.Value.CenterOfMass = cellsWithLowestY.Where(x => x.Value == lowestX).ToDictionary().FirstOrDefault().Key;
+                        }
+                        else
+                        {
+                            subregion.Value.CenterOfMass = cellsWithLowestY.FirstOrDefault().Key;
+                        }
+                    }
+                    else
+                    {
+                        subregion.Value.CenterOfMass = cellsWithLowestDifference.FirstOrDefault().Key;
+                    }
+                    
+                }
             }
         }
 

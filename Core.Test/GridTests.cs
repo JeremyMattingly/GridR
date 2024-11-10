@@ -83,6 +83,13 @@
             };
             expectedSubregions.Add(2, subregion3);
 
+            var expectedCenterOfMass = new Dictionary<uint, Coordinate>
+            {
+                { 0, new Coordinate(1, 1) },
+                {1, new Coordinate(4,2) },
+                {2, new Coordinate(5,4) },
+            };
+
             var result = new Grid(exampleArray, threshold);
 
             Assert.IsTrue(result.Subregions.Count == 3);
@@ -98,6 +105,73 @@
                     Assert.IsTrue(result.Subregions[expectedSubregion.Key].Cells.ContainsKey(expectedCell.GridCoordinate)
                                   && result.Subregions[expectedSubregion.Key].Cells[expectedCell.GridCoordinate].Equals(expectedCell));
                 }
+            }
+
+            foreach (var expectedCenterofMass in expectedCenterOfMass)
+            {
+                Assert.AreEqual(expectedCenterofMass.Value, result.Subregions[expectedCenterofMass.Key].CenterOfMass);
+            }
+        }
+
+        [TestMethod]
+        public void Constructor_ExampleArray2_ProperlyFindsSubregions()
+        {
+            var (exampleArray, threshold) = Grid.GetExampleArray2();
+            var expectedCellsForInput = ExpectedCellsForExampleArray.Cells2;
+
+            var expectedSubregions = new Dictionary<uint, Dictionary<Coordinate, Cell>>();
+
+            var subregion1 = new Dictionary<Coordinate, Cell>
+            {
+                { new(1, 1), expectedCellsForInput[new(1, 1)] }
+            };
+            expectedSubregions.Add(0, subregion1);
+
+            var subregion2 = new Dictionary<Coordinate, Cell>
+            {
+                //{ new(3, 3), expectedCellsForInput[new(3, 3)] },
+                { new(3, 2), expectedCellsForInput[new(3, 2)] },
+                { new(4, 2), expectedCellsForInput[new(4, 2)] },
+                { new(4, 1), expectedCellsForInput[new(4, 1)] },
+                { new(5, 1), expectedCellsForInput[new(5, 1)] }
+            };
+            expectedSubregions.Add(1, subregion2);
+
+            var subregion3 = new Dictionary<Coordinate, Cell>
+            {
+                { new(5, 4), expectedCellsForInput[new Coordinate(5, 4)] },
+                { new(5, 5), expectedCellsForInput[new Coordinate(5, 5)] },
+                { new(4, 4), expectedCellsForInput[new Coordinate(4, 4)] }
+            };
+            expectedSubregions.Add(2, subregion3);
+
+            var expectedCenterOfMass = new Dictionary<uint, Coordinate>
+            {
+                { 0, new Coordinate(1, 1) },
+                {1, new Coordinate(4,1) },
+                {2, new Coordinate(4,4) },
+            };
+
+            var result = new Grid(exampleArray, threshold);
+
+            Assert.IsTrue(result.Subregions.Count == 3);
+
+            foreach (var expectedSubregion in expectedSubregions)
+            {
+                Assert.IsTrue(result.Subregions.ContainsKey(expectedSubregion.Key));
+
+                Assert.AreEqual(expectedSubregion.Value.Count, result.Subregions[expectedSubregion.Key].Cells.Count);
+
+                foreach (var expectedCell in expectedSubregion.Value.Values)
+                {
+                    Assert.IsTrue(result.Subregions[expectedSubregion.Key].Cells.ContainsKey(expectedCell.GridCoordinate)
+                                  && result.Subregions[expectedSubregion.Key].Cells[expectedCell.GridCoordinate].Equals(expectedCell));
+                }
+            }
+
+            foreach (var expectedCenterofMass in expectedCenterOfMass)
+            {
+                Assert.AreEqual(expectedCenterofMass.Value, result.Subregions[expectedCenterofMass.Key].CenterOfMass);
             }
         }
     }
