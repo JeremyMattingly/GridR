@@ -27,37 +27,60 @@
             Subregions = Subregion.GetSubregionsForGrid(this);
         }
 
-        public static (int[,] exampleArray, int threshold) GetExampleArray()
+        public static (int[,] exampleArray, int threshold) GetExampleArray(int exampleId)
         {
             int threshold = 200;
 
-            int[,] input = new int[6, 6]
-            {
-                { 0, 115, 5, 15, 0, 5 },
-                { 80, 210, 0, 5, 5, 0 },
-                { 45, 60, 145, 175, 95, 25 },
-                { 95, 5, 250, 250, 115, 5 },
-                { 170, 230, 245, 185, 165, 145 },
-                { 145, 220, 140, 160, 250, 250 }
-            };
-            return (input, threshold);
-        }
-        
-        public static (int[,] exampleArray, int threshold) GetExampleArray2()
-        {
-            int threshold = 200;
+            int[,] array = new int[6, 6];
 
-            int[,] input = new int[6, 6]
+            switch (exampleId)
             {
-                { 0, 115, 5, 15, 0, 5 },
-                { 80, 210, 0, 5, 5, 0 },
-                { 45, 60, 145, 175, 95, 25 },
-                { 95, 5, 250, 95, 115, 5 },
-                { 170, 230, 245, 185, 250, 145 },
-                { 145, 220, 140, 160, 250, 250 }
-            };
-            return (input, threshold);
+                case 1:
+                    {
+                        array = new int[6, 6]
+                        {
+                            { 0, 115, 5, 15, 0, 5 },
+                            { 80, 210, 0, 5, 5, 0 },
+                            { 45, 60, 145, 175, 95, 25 },
+                            { 95, 5, 250, 250, 115, 5 },
+                            { 170, 230, 245, 185, 165, 145 },
+                            { 145, 220, 140, 160, 250, 250 }
+                        };
+                    }
+                    break;
+                case 2:
+                    {
+                        array = new int[6, 6]
+                        {
+                            { 0, 115, 5, 15, 0, 5 },
+                            { 80, 210, 0, 5, 5, 0 },
+                            { 45, 60, 145, 175, 95, 25 },
+                            { 95, 5, 250, 95, 115, 5 },
+                            { 170, 230, 245, 185, 250, 145 },
+                            { 145, 220, 140, 160, 250, 250 }
+                        };
+                    }
+                    break;
+            }
+
+            return (array, threshold);
         }
+
+        //public static (int[,] exampleArray, int threshold) GetExampleArray2()
+        //{
+        //    int threshold = 200;
+
+        //    int[,] input = new int[6, 6]
+        //    {
+        //        { 0, 115, 5, 15, 0, 5 },
+        //        { 80, 210, 0, 5, 5, 0 },
+        //        { 45, 60, 145, 175, 95, 25 },
+        //        { 95, 5, 250, 95, 115, 5 },
+        //        { 170, 230, 245, 185, 250, 145 },
+        //        { 145, 220, 140, 160, 250, 250 }
+        //    };
+        //    return (input, threshold);
+        //}
 
         private void LoadCells()
         {

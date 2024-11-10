@@ -44,7 +44,7 @@ namespace ActivTrak.Assessment.GridR.Core
 
                 foreach (var cell in grid.Cells)
                 {
-                    if (cell.Value.Signal >= grid.Threshold)
+                    if (cell.Value.Signal > grid.Threshold)
                     {
                         interestingCells.Add(cell.Key, cell.Value);
                     }
@@ -200,12 +200,12 @@ namespace ActivTrak.Assessment.GridR.Core
                     int average = -1;
                     int lowestDifference = -1;
                     Dictionary<Coordinate, int> cellsWithDifferenceFromAverage = [];
-                    Dictionary<Coordinate, int> cellsWithLowestDifference = new Dictionary<Coordinate, int>();
+                    Dictionary<Coordinate, int> cellsWithLowestDifference = [];
                     Dictionary<Coordinate, uint> cellsWithCoordinateYAsValue = [];
                     uint lowestY = 0;
                     Dictionary<Coordinate, uint> cellsWithLowestY = [];
                     uint lowestX = 0;
-                    
+
 
                     foreach (var cell in subregion.Value.Cells)
                     {
@@ -216,7 +216,7 @@ namespace ActivTrak.Assessment.GridR.Core
 
                     // find closest coordinate by
                     // getting difference
-                    
+
                     foreach (var cell in subregion.Value.Cells)
                     {
                         cellsWithDifferenceFromAverage.Add(cell.Key, Math.Abs(average - cell.Value.Signal));
@@ -227,7 +227,7 @@ namespace ActivTrak.Assessment.GridR.Core
 
                     cellsWithLowestDifference = cellsWithDifferenceFromAverage.Where(x => x.Value == lowestDifference).ToDictionary<Coordinate, int>();
 
-                    if (cellsWithLowestDifference.Count > 1 )
+                    if (cellsWithLowestDifference.Count > 1)
                     {
                         // more than 1?
                         cellsWithCoordinateYAsValue = cellsWithLowestDifference.Keys.Select(x => new KeyValuePair<Coordinate, uint>(x, x.Y)).ToDictionary<Coordinate, uint>();
@@ -247,7 +247,7 @@ namespace ActivTrak.Assessment.GridR.Core
                     {
                         subregion.Value.CenterOfMass = cellsWithLowestDifference.FirstOrDefault().Key;
                     }
-                    
+
                 }
             }
         }

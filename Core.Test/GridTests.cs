@@ -28,7 +28,7 @@
         [TestMethod]
         public void Constructor_ValidInput_ResultsInValidCells()
         {
-            var (input, _) = Grid.GetExampleArray();
+            var (input, _) = Grid.GetExampleArray(1);
 
             var expectedCells = ExpectedCellsForExampleArray.Cells;
 
@@ -45,7 +45,7 @@
         [TestMethod]
         public void Constructor_ValidInput_ResultsInValidThreshold()
         {
-            var (array, input) = Grid.GetExampleArray();
+            var (array, input) = Grid.GetExampleArray(1);
 
             var result = new Grid(array, input);
 
@@ -55,7 +55,7 @@
         [TestMethod]
         public void Constructor_ExampleArray_ProperlyFindsSubregions()
         {
-            var (exampleArray, threshold) = Grid.GetExampleArray();
+            var (exampleArray, threshold) = Grid.GetExampleArray(1);
             var expectedCellsForInput = ExpectedCellsForExampleArray.Cells;
 
             var expectedSubregions = new Dictionary<uint, Dictionary<Coordinate, Cell>>();
@@ -116,7 +116,7 @@
         [TestMethod]
         public void Constructor_ExampleArray2_ProperlyFindsSubregions()
         {
-            var (exampleArray, threshold) = Grid.GetExampleArray2();
+            var (exampleArray, threshold) = Grid.GetExampleArray(2);
             var expectedCellsForInput = ExpectedCellsForExampleArray.Cells2;
 
             var expectedSubregions = new Dictionary<uint, Dictionary<Coordinate, Cell>>();
