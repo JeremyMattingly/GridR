@@ -1,11 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ActivTrak.Assessment.GridR.Core.Test
+﻿namespace ActivTrak.Assessment.GridR.Core.Test
 {
     [TestClass]
     public class SubregionTests
@@ -29,7 +22,6 @@ namespace ActivTrak.Assessment.GridR.Core.Test
             var subregion2 = new Subregion(1);
 
             Assert.IsTrue(subregion1.Equals(subregion2));
-
         }
 
         [TestMethod]
@@ -40,7 +32,6 @@ namespace ActivTrak.Assessment.GridR.Core.Test
             var subregion2 = new Subregion(2);
 
             Assert.IsFalse(subregion1.Equals(subregion2));
-
         }
 
         [TestMethod]

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ActivTrak.Assessment.GridR.Core
+﻿namespace ActivTrak.Assessment.GridR.Core
 {
     public readonly record struct Coordinate(uint X, uint Y) : IEquatable<Coordinate>
     {

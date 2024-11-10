@@ -1,11 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ActivTrak.Assessment.GridR.Core.Test
+﻿namespace ActivTrak.Assessment.GridR.Core.Test
 {
     [TestClass]
     public class GridTests
@@ -45,9 +38,8 @@ namespace ActivTrak.Assessment.GridR.Core.Test
 
             foreach (var cell in expectedCells)
             {
-                Assert.IsTrue(results.Cells.Values.Contains(cell.Value));
+                Assert.IsTrue(results.Cells.ContainsValue(cell.Value));
             }
-
         }
 
         [TestMethod]
@@ -99,7 +91,7 @@ namespace ActivTrak.Assessment.GridR.Core.Test
 
                 foreach (var expectedCell in expectedSubregion.Value.Cells)
                 {
-                    Assert.IsTrue(result.Subregions[expectedSubregion.Key].Cells.ContainsKey(expectedCell.Key) && result.Subregions[expectedSubregion.Key].Cells[expectedCell.Key].Equals( expectedCell.Value));
+                    Assert.IsTrue(result.Subregions[expectedSubregion.Key].Cells.ContainsKey(expectedCell.Key) && result.Subregions[expectedSubregion.Key].Cells[expectedCell.Key].Equals(expectedCell.Value));
                 }
             }
         }

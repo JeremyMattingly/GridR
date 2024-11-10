@@ -9,23 +9,18 @@ namespace ActivTrak.Assessment.GridR.CLI
             int[,] inputArray = GetArray();
             int threshold = 200;
 
-
-            // Get Grid (array, threshold)
             var grid = new Grid(inputArray, threshold);
 
-            // Display sub-regions
             foreach (var subregion in grid.Subregions)
             {
                 Console.WriteLine($"Subregion: {subregion.Key}");
-                // with their interesting cells
+
                 foreach (var cell in subregion.Value.Cells)
                 {
-                    Console.WriteLine($"{cell.Value.ToString()}");
+                    Console.WriteLine($"{cell.Value}");
                 }
             }
             Console.ReadKey();
-
-            
         }
 
         private static int[,] GetArray()

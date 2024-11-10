@@ -1,11 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ActivTrak.Assessment.GridR.Core.Test
+﻿namespace ActivTrak.Assessment.GridR.Core.Test
 {
     [TestClass]
     public class CoordinateTests
