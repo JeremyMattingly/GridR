@@ -1,9 +1,9 @@
 **Title**: Component Identification & Architecture Scope  
-**Number**: 0002  
+**Number**: 0003  
 **Decision Date**: 11/9/2024  
-**State**: Superseded  
-**Supersedes**:  
-**Superseded By**: 0003  
+**State**: Active  
+**Supersedes**: 0002  
+**Superseded By**:  
 
 # Description
 
@@ -33,16 +33,32 @@ block-beta
     space
     block:coreLibrary
     columns 3
+      Core["Core Library"]
+      space:2
       space
-      Orchestrator
+      Grid
       space
       space:3
-      A["Grid Creator"]
-      B["Subregion Identifier"]
-     C["Center of Mass Calculator"]
+      Subregion
+      space
+      Cell
+      space:3
+      C["Center of Mass Calculator"]
+      space
+      Coordinate
     end
+    space
   end
-  CLI --> Orchestrator
+  CLI --> Grid
+  Grid --> Subregion
+  Grid --> Cell
+  Subregion --> Cell
+  Subregion --> C
+  Cell --> Coordinate
+style Core stroke-width:0px,color:#fff,fill:#444
+  
+    
+
   Orchestrator --> A
   Orchestrator --> B
   Orchestrator --> C

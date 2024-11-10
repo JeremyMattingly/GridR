@@ -1,9 +1,9 @@
-Title: 
-Number: 
-Decision Date: 
-State: Draft, Active, Superseded, Dismissed
-Supersedes: 
-Superseded by:
+**Title**:  
+**Number**:  
+**Decision Date**:  
+**State**: Draft, Active, Superseded, Dismissed  
+**Supersedes**:  
+**Superseded By**:  
 
 # Description
 
