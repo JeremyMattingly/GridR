@@ -5,6 +5,10 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{55F9582D-D480-4A5C-BD8B-435208317230}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{09097D6C-4097-42E0-9435-C02D229138A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Test", "Core.Test\Core.Test.csproj", "{EBFDA804-922D-4823-85B9-ECCA2CD1E0F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{55F9582D-D480-4A5C-BD8B-435208317230}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55F9582D-D480-4A5C-BD8B-435208317230}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55F9582D-D480-4A5C-BD8B-435208317230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBFDA804-922D-4823-85B9-ECCA2CD1E0F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBFDA804-922D-4823-85B9-ECCA2CD1E0F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBFDA804-922D-4823-85B9-ECCA2CD1E0F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBFDA804-922D-4823-85B9-ECCA2CD1E0F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EBFDA804-922D-4823-85B9-ECCA2CD1E0F7} = {09097D6C-4097-42E0-9435-C02D229138A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3A860AE9-8CF3-481A-A186-DA0ABE3E4581}
