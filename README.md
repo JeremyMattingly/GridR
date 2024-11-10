@@ -19,3 +19,11 @@ The purpose is to provide an example of how large scale projects could be treate
 ## Change Log
 
 The Merge Commits of this repository will serve as the change log for this implementation.
+
+## Executing the application
+
+To run the application:
+- Clone this repository
+- Open the solution in the latest version of Visual Studio
+- Set the CLI as the startup project
+- Run with or without debugging
