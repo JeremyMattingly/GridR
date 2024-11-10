@@ -72,7 +72,7 @@
         private void CreatFirstSubRegionAndAddCellToIt(KeyValuePair<Coordinate, Cell> interestingCell)
         {
             Subregions.Add(0, new Subregion(0));
-            Subregions[0].Cells.Add(interestingCell.Key, interestingCell.Value);
+            Subregions[0].AddCell(interestingCell.Key, interestingCell.Value);
         }
 
         private void DetermineTargetSubregionAndAddCellToIt(Dictionary<Coordinate, Cell> interestingCells, KeyValuePair<Coordinate, Cell> interestingCell)
@@ -87,7 +87,7 @@
                     if (neighborsSubregion is not null)
                     {
                         // add interesting cell to region containing neighbor
-                        neighborsSubregion.Cells.Add(interestingCell.Key, interestingCell.Value);
+                        neighborsSubregion.AddCell(interestingCell.Key, interestingCell.Value);
                         break;
                     }
                     else
@@ -106,7 +106,7 @@
                                     if (neighborsNeighborsSubregion is not null)
                                     {
                                         //neighbor's neighbor is accounted for in a region so add interesting cell to that neighbor's neighbor's subregion
-                                        neighborsNeighborsSubregion.Cells.Add(interestingCell.Key, interestingCell.Value);
+                                        neighborsNeighborsSubregion.AddCell(interestingCell.Key, interestingCell.Value);
                                         cellAddedViaNeighborsNeighbor = true;
                                         break;
                                     }
@@ -203,7 +203,7 @@
         private void AddCellToNewSubregion(KeyValuePair<Coordinate, Cell> interestingCell)
         {
             Subregion newSubregion = new((uint)Subregions.Count);
-            newSubregion.Cells.Add(interestingCell.Key, interestingCell.Value);
+            newSubregion.AddCell(interestingCell.Key, interestingCell.Value);
             Subregions.Add(newSubregion.Id, newSubregion);
         }
     }

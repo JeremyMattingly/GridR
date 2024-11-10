@@ -63,20 +63,20 @@
             var expectedSubregions = new Dictionary<uint, Subregion>();
 
             var subregion1 = new Subregion(0);
-            subregion1.Cells.Add(new(1, 1), expectedCellsForInput[new(1, 1)]);
+            subregion1.AddCell(new(1, 1), expectedCellsForInput[new(1, 1)]);
             expectedSubregions.Add(subregion1.Id, subregion1);
 
             var subregion2 = new Subregion(1);
-            subregion2.Cells.Add(new(3, 3), expectedCellsForInput[new(3, 3)]);
-            subregion2.Cells.Add(new(3, 2), expectedCellsForInput[new(3, 2)]);
-            subregion2.Cells.Add(new(4, 2), expectedCellsForInput[new(4, 2)]);
-            subregion2.Cells.Add(new(4, 1), expectedCellsForInput[new(4, 1)]);
-            subregion2.Cells.Add(new(5, 1), expectedCellsForInput[new(5, 1)]);
+            subregion2.AddCell(new(3, 3), expectedCellsForInput[new(3, 3)]);
+            subregion2.AddCell(new(3, 2), expectedCellsForInput[new(3, 2)]);
+            subregion2.AddCell(new(4, 2), expectedCellsForInput[new(4, 2)]);
+            subregion2.AddCell(new(4, 1), expectedCellsForInput[new(4, 1)]);
+            subregion2.AddCell(new(5, 1), expectedCellsForInput[new(5, 1)]);
             expectedSubregions.Add(subregion2.Id, subregion2);
 
             var subregion3 = new Subregion(2);
-            subregion3.Cells.Add(new(5, 4), expectedCellsForInput[new Coordinate(5, 4)]);
-            subregion3.Cells.Add(new(5, 5), expectedCellsForInput[new Coordinate(5, 5)]);
+            subregion3.AddCell(new(5, 4), expectedCellsForInput[new Coordinate(5, 4)]);
+            subregion3.AddCell(new(5, 5), expectedCellsForInput[new Coordinate(5, 5)]);
             expectedSubregions.Add(subregion3.Id, subregion3);
 
             var result = new Grid(input, threshold);

@@ -1,9 +1,24 @@
-﻿namespace ActivTrak.Assessment.GridR.Core
+﻿using System.Collections.ObjectModel;
+
+namespace ActivTrak.Assessment.GridR.Core
 {
-    public class Subregion(uint id) : IEquatable<Subregion>
+    public class Subregion : IEquatable<Subregion>
     {
-        public uint Id { get; } = id;
-        public Dictionary<Coordinate, Cell> Cells { get; } = [];
+        private readonly Dictionary<Coordinate, Cell> _cells = [];
+
+        public uint Id { get; }
+        public ReadOnlyDictionary<Coordinate, Cell> Cells { get; private set; }
+
+        public Subregion(uint id)
+        {
+            Id = id;
+            Cells = _cells.AsReadOnly();
+        }
+
+        public void AddCell(Coordinate coordinate, Cell cell)
+        {
+            _cells.Add(coordinate, cell);
+        }
 
         public bool Equals(Subregion? other) => other != null && other.Id == Id;
 
