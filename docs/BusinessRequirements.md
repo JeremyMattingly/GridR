@@ -6,7 +6,7 @@ Produce a function that takes two inputs and produces the specified output.
 
 ### Input
 
-- two-dimensinoal array of values
+- two-dimensional array of values
 - a threshold *T*
 
 ### Output
