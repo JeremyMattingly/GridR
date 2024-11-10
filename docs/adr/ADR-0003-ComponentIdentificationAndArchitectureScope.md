@@ -7,7 +7,7 @@
 
 # Description
 
-Component Identificaiton deals with understanding the modular parts of a solution. These components could be delivered as part of a modular monolith, microservices or some other design.
+Component identification deals with understanding the modular parts of a solution. These components could be delivered as part of a modular monolith, microservices, or some other design.
 
 Architecture Scope identifies the smallest deployable part of the solution. In the case of a monolith, the entire monolith is the architectural scope. Individual microservices are each their own Architecture Scope. The Architecture Scope of a system will affect various decisions such as how to scale a solution, the communication requirements between components, data storage, etc.
 
@@ -16,9 +16,10 @@ Architecture Scope identifies the smallest deployable part of the solution. In t
 ## Option 1: CLI
 
 Components:
-- Orchestrator
-- Grid Creator
-- Subregion Identifier
+- Grid
+- Subregion
+- Cell
+- Coordinate
 - Center of Mass Calculator
 
 Architecture Scope: Deploy the solution as a Command Line Interface with these containers:
@@ -56,23 +57,7 @@ block-beta
   Subregion --> C
   Cell --> Coordinate
 style Core stroke-width:0px,color:#fff,fill:#444
-  
-    
-
-  Orchestrator --> A
-  Orchestrator --> B
-  Orchestrator --> C
 ```
-
-## Option 2: Web Application with Microservices
-
-Components:
-- Orchestrator
-- Grid Creator
-- Subregion Identifier
-- Center of Mass Calculator
-
-Architecture Scope: Deploy each component as a microservice. Include a web application with an API Gateway as the backend.
 
 # Selected Option
 
@@ -81,3 +66,5 @@ Option 1: CLI
 The initial release of GridR is a Command Line Interface. There are no special requirements that the components of the application need to be physically deployed separately.
 
 There are currently no data storage requirements nor any reason for communication outside of the core components.
+
+The structure has been updated from 0002 as there was no need for an orchestrator.
