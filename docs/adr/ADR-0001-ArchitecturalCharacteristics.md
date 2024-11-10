@@ -1,9 +1,9 @@
-Title: Architectural Characteristics
-Number: 0001
-Decision Date: 11/9/2024
-State: Active
-Supersedes: 
-Superseded by:
+**Title**: Architectural Characteristics  
+**Number**: 0001  
+**Decision Date**: 11/9/2024  
+**State**: Active  
+**Supersedes**:  
+**Superseded By**: 
 
 # Description
 
