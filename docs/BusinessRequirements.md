@@ -34,6 +34,9 @@ Produce a function that takes two inputs and produces the specified output.
 
 - Average position of the cells in a subregion
 - cell locations are weighted by it's signal value
+- cell that is closest to average (by absolute difference) is the center
+- if multiple cells are equal distance from average, then the cell with the lowest Y value is the center
+- if multiple cells are equal distance from average and share the lowest Y value, then the cell with the lowest X value is the center
 
 ## Non-Functional
 
