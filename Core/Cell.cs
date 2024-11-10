@@ -23,6 +23,6 @@ namespace ActivTrak.Assessment.GridR.Core
             throw new NotImplementedException();
         }
 
-        public override string ToString() => Signal.ToString();
+        public override string ToString() => $"{GridCoordinate} {Signal}";
     }
 }
