@@ -9,9 +9,9 @@ namespace ActivTrak.Assessment.GridR.Core
     public class Cell(Coordinate coordinate, int value) : IEquatable<Cell>
     {
         public Coordinate GridCoordinate { get; } = coordinate;
-        public int Value { get; set; } = value;
+        public int Signal { get; } = value;
 
-        public bool Equals(Cell? other) => other != null && other.GridCoordinate == GridCoordinate && other.Value == Value;
+        public bool Equals(Cell? other) => (other != null) && (other.GridCoordinate == GridCoordinate) && (other.Signal == Signal);
 
         public override bool Equals(object? obj)
         {
@@ -22,5 +22,7 @@ namespace ActivTrak.Assessment.GridR.Core
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString() => Signal.ToString();
     }
 }
